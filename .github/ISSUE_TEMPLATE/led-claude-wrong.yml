@@ -1,0 +1,35 @@
+name: The skill led Claude wrong
+description: Claude built something wrong, wasted time or tokens, or ignored what you said, while using pic-to-blender.
+labels: [skill-mistake]
+body:
+  - type: input
+    id: object
+    attributes:
+      label: What were you building?
+      placeholder: A wooden kitchen chair with spindles
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What did Claude do?
+      description: What went wrong. Paste the relevant part of the conversation if you can (leave out anything personal).
+    validations:
+      required: true
+  - type: textarea
+    id: right
+    attributes:
+      label: What would have been right?
+      description: What worked in the end, or what you'd expect. This is what goes into the skill.
+    validations:
+      required: true
+  - type: textarea
+    id: pictures
+    attributes:
+      label: Renders or screenshots
+      description: Drag images here. Only objects, no people or other people's homes.
+  - type: input
+    id: versions
+    attributes:
+      label: Blender and plugin version
+      placeholder: Blender 4.5, pic-to-blender 0.1.0

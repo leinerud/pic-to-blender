@@ -1,0 +1,23 @@
+name: New technique
+description: A kind of object the skill handles badly, or a way of modelling something that worked well.
+labels: [technique]
+body:
+  - type: input
+    id: kind
+    attributes:
+      label: Kind of object
+      placeholder: Upholstered furniture, bicycles, ceramics, cars…
+    validations:
+      required: true
+  - type: textarea
+    id: how
+    attributes:
+      label: What worked (or what's missing)
+      description: The technique, in steps or as bpy code, and the traps you hit on the way.
+    validations:
+      required: true
+  - type: textarea
+    id: pictures
+    attributes:
+      label: Renders
+      description: Before and after, if you have them.

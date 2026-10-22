@@ -11,6 +11,11 @@ from photos, hit a problem, and found what works.
   saying what it builds and how to run it, and mention it in `SKILL.md` section 2.
 - **A fix** to something in `SKILL.md` that led Claude the wrong way. Say in the pull request what happened.
 
+## Not a coder?
+
+Open an issue instead: *The skill led Claude wrong* when it built something wrong or wasted time, or *New technique*
+when you found a way that works. Real mistakes with what would have been right are the best material there is.
+
 ## Rules
 
 - **Keep `SKILL.md` short.** It's loaded every time the skill runs, so every line costs tokens for every user. Detail
@@ -27,4 +32,6 @@ from photos, hit a problem, and found what works.
 1. Fork the repo and make a branch.
 2. Make your change. To try it, add your fork as a marketplace in Claude Code:
    `/plugin marketplace add ./path/to/your/clone`, then `/plugin install pic-to-blender@pic-to-blender`.
-3. Open a pull request saying what you changed and what you built to test it.
+3. Run the check locally: `python3 .github/scripts/check.py origin/main`.
+4. Open a pull request saying what you changed and what you built to test it. The same check runs on it, and the
+   maintainer reviews and merges it.
