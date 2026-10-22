@@ -1,0 +1,9 @@
+{
+  "name": "pic-to-blender",
+  "description": "Build any real object in Blender from photos (a cup, a chair, a bike, a house), through the Blender MCP, and check it against the photos with renders until it matches.",
+  "version": "0.1.0",
+  "author": { "name": "Daniel Leinerud" },
+  "repository": "https://github.com/leinerud/pic-to-blender",
+  "license": "MIT",
+  "keywords": ["blender", "3d", "modelling", "photos"]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "pic-to-blender",
+  "owner": { "name": "Daniel Leinerud" },
+  "metadata": {
+    "description": "Send Claude photos of any object and it builds the object in Blender."
+  },
+  "plugins": [
+    {
+      "name": "pic-to-blender",
+      "source": "./plugins/pic-to-blender",
+      "description": "Build any real object in Blender from photos (a cup, a chair, a bike, a house), through the Blender MCP, and check it against the photos with renders until it matches.",
+      "version": "0.1.0",
+      "category": "design",
+      "keywords": ["blender", "3d", "modelling", "photos"]
+    }
+  ]
+}
