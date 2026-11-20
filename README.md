@@ -13,8 +13,11 @@ In Claude Code:
 /plugin install pic-to-blender@pic-to-blender
 ```
 
-Without the plugin system, copy `plugins/pic-to-blender/skills/pic-to-blender/` into `~/.claude/skills/`. In the Claude
-app, zip that folder and upload it under Settings → Capabilities → Skills.
+Without the plugin system, copy `plugins/pic-to-blender/skills/pic-to-blender/` into `~/.claude/skills/`.
+
+In the Claude app, download [pic-to-blender.zip](https://github.com/leinerud/pic-to-blender/releases/latest/download/pic-to-blender.zip)
+from the latest release and upload it under Settings → Capabilities → Skills. To hear about new versions, use
+Watch → Custom → Releases on this page.
 
 ## You also need
 
@@ -35,6 +38,16 @@ phone stood), so sizes are measured instead of guessed.
 [GUIDE.md](GUIDE.md) walks through the whole process for people: which photos to take, how to use drawings and
 LiDAR depth, how the numbers are fixed before anything is built, how the model is checked against your photos, and
 how to give corrections.
+
+## Testing it
+
+Thanks for trying it. To make results comparable:
+
+1. **First task:** a mug or a simple chair you own, from three photos (front, side, and a corner at 45°), plus one
+   measurement with a ruler or tape. Say "build this in Blender" and give it the photos and the measurement.
+2. **Then anything you like**, ideally something with drawings or a LiDAR phone if you have one.
+3. **Report each build** with the [Test report](https://github.com/leinerud/pic-to-blender/issues/new?template=test-report.yml)
+   form: what you gave it, how well it matched, how long it took, and what went wrong.
 
 ## What's in it
 

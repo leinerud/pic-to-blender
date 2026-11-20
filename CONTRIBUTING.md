@@ -35,3 +35,9 @@ when you found a way that works. Real mistakes with what would have been right a
 3. Run the check locally: `python3 .github/scripts/check.py origin/main`.
 4. Open a pull request saying what you changed and what you built to test it. The same check runs on it, and the
    maintainer reviews and merges it.
+
+## Releases
+
+After a pull request with a version bump is merged, the maintainer tags that commit on `main` with the new version
+(`git tag v0.2.0 && git push origin v0.2.0`). The Release workflow then publishes a release with notes from the merged
+pull requests and the skill as `pic-to-blender.zip` for the Claude app.

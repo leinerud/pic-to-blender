@@ -1,0 +1,53 @@
+name: Test report
+description: You tried pic-to-blender on something. Tell us how it went, good or bad.
+labels: [test-report]
+body:
+  - type: input
+    id: object
+    attributes:
+      label: What did you build?
+      placeholder: The mug from the first task / my own bookshelf
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: What did you give Claude?
+      description: How many photos, and anything else (measurements, drawings, LiDAR depth).
+      placeholder: 3 photos and the height measured with a ruler
+    validations:
+      required: true
+  - type: dropdown
+    id: match
+    attributes:
+      label: How well does the model match the real thing?
+      options:
+        - 5 - you could mistake the render for the photo's object
+        - 4 - right shape and parts, small things off
+        - 3 - recognisable, but proportions or parts wrong
+        - 2 - only roughly the right shape
+        - 1 - not usable
+    validations:
+      required: true
+  - type: input
+    id: time
+    attributes:
+      label: How long did it take, and how many correction rounds?
+      placeholder: 40 minutes, 3 rounds of corrections
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What went wrong or was hard?
+      description: Installing, connecting Blender, things Claude got wrong, wasted time. Leave out anything personal.
+  - type: textarea
+    id: renders
+    attributes:
+      label: Photo and render
+      description: A photo and a render from the same angle, if you're happy to share them (no people, no private homes).
+  - type: input
+    id: setup
+    attributes:
+      label: Setup
+      placeholder: "Blender 5.2, macOS 15, Claude Code (or the Claude app)"
+    validations:
+      required: true
