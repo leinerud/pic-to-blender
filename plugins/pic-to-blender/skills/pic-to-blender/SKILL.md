@@ -24,6 +24,10 @@ This work burns tokens fast if done carelessly. Every rule here saves thousands:
 - **Small pictures, few of them.** Check renders at 25 % (480 × 270) of 1–3 views, only of the part that changed. Use
   `scale` on screenshots. Look at a picture once; don't re-read old renders to remember them, write down what you saw.
   Full-size renders are for the user: send them without reading them yourself.
+- **Read each photo of the user's once, then use notes.** Make a small working copy of each (longest side ~1000 px,
+  `sips -Z 1000` or Pillow) and crops of the details you need. Write what each photo shows (counts, positions,
+  colours) into the script's comments. After that, compare against the small copies with `check_render.py`'s
+  side-by-side images, and don't open the originals again.
 - **One change, one check.** Batch the user's corrections into one script edit and one render round, not one render
   per correction.
 - **Long waits in the background** (film renders, exports): a background command, not polling.
@@ -82,8 +86,6 @@ Everything is made by Python run through `execute_blender_code`, so it can be re
   is editing a number and rerunning.
 - **Idempotent scripts**: each deletes what it made before it builds again, and reads positions it depends on from the
   scene, so it still works after something else moved.
-- **Keep long scripts in files** (next to the `.blend` or in a `scripts/` folder) and run them with
-  `exec(open(path).read())`.
 - **Save after every change** (`bpy.ops.wm.save_mainfile()`), and say so.
 
 Helpers in this skill:
@@ -105,7 +107,8 @@ After each change, render from where the user's photo was taken and compare, det
 Put the camera where the photo was taken (from its pose, or nudged until the corners line up), with the photo's
 field of view and aspect ratio (see `references/techniques.md`, Checking against a photo).
 `scripts/check_render.py` makes small renders from given viewpoints without touching the scene's cameras: set
-`VIEWS`, `OUT` (a temp folder), `PCT` (25 is enough), exec it, then look at the PNGs side by side with the photo. A viewport
+`VIEWS`, `OUT` (a temp folder), `PCT` (25 is enough) and `PHOTOS` (view name → the small photo copy), exec it, and
+read only the `<view>_vs.png` files: the render and the photo in one picture. A viewport
 screenshot (`get_screenshot_of_area_as_image`) is quicker for layout checks.
 
 - Keep MCP calls under ~2 minutes (they time out): 2–3 EEVEE views per call. A timeout doesn't stop Blender;
