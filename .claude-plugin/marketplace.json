@@ -9,7 +9,7 @@
       "name": "pic-to-blender",
       "source": "./plugins/pic-to-blender",
       "description": "Build any real object in Blender from photos (a cup, a chair, a bike, a house), through the Blender MCP, and check it against the photos with renders until it matches.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "design",
       "keywords": ["blender", "3d", "modelling", "photos"]
     }
