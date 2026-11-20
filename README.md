@@ -39,6 +39,16 @@ phone stood), so sizes are measured instead of guessed.
 LiDAR depth, how the numbers are fixed before anything is built, how the model is checked against your photos, and
 how to give corrections.
 
+## Testing it
+
+Thanks for trying it. To make results comparable:
+
+1. **First task:** a mug or a simple chair you own, from three photos (front, side, and a corner at 45°), plus one
+   measurement with a ruler or tape. Say "build this in Blender" and give it the photos and the measurement.
+2. **Then anything you like**, ideally something with drawings or a LiDAR phone if you have one.
+3. **Report each build** with the [Test report](https://github.com/leinerud/pic-to-blender/issues/new?template=test-report.yml)
+   form: what you gave it, how well it matched, how long it took, and what went wrong.
+
 ## What's in it
 
 | Path (under `plugins/pic-to-blender/skills/pic-to-blender/`) | What it is |

@@ -1,8 +1,8 @@
 # Render quick check pictures from given viewpoints without touching the scene's own cameras or output settings.
 # Run inside the live Blender (Blender MCP execute_blender_code):
 #
-#   VIEWS = {"entre": ((14.5, 9.8, 2.4), (9.2, 4.6, 2.2), 24),   # name: (camera xyz, look-at xyz, lens mm)
-#            "gavel": ((2.5, -9, 4.5), (2.4, 1.45, 4.5), 30)}
+#   VIEWS = {"entrance": ((14.5, 9.8, 2.4), (9.2, 4.6, 2.2), 24),   # name: (camera xyz, look-at xyz, lens mm)
+#            "gable": ((2.5, -9, 4.5), (2.4, 1.45, 4.5), 30)}
 #   OUT = "<scratchpad>/"          # folder for the PNGs
 #   PCT = 25                       # resolution percentage (25 % of 1920x1080 is enough to judge shape, and cheap to look at)
 #   exec(open("<this skill>/scripts/check_render.py").read())
