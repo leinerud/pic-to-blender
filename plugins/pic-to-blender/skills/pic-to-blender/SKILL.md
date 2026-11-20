@@ -24,6 +24,10 @@ This work burns tokens fast if done carelessly. Every rule here saves thousands:
 - **Small pictures, few of them.** Check renders at 25 % (480 × 270) of 1–3 views, only of the part that changed. Use
   `scale` on screenshots. Look at a picture once; don't re-read old renders to remember them, write down what you saw.
   Full-size renders are for the user: send them without reading them yourself.
+- **Read each photo of the user's once, then use notes.** Make a small working copy of each (longest side ~1000 px,
+  `sips -Z 1000` or Pillow) and crops of the details you need. Write what each photo shows (counts, positions,
+  colours) into the script's comments. After that, compare against the small copies with `check_render.py`'s
+  side-by-side images, and don't open the originals again.
 - **One change, one check.** Batch the user's corrections into one script edit and one render round, not one render
   per correction.
 - **Long waits in the background** (film renders, exports): a background command, not polling.
@@ -43,7 +47,9 @@ This work burns tokens fast if done carelessly. Every rule here saves thousands:
   save a copy (`save_as_mainfile`) such as `<name>_v1.1_<what>.blend`, and say which file is open. Move rejected
   versions to the Trash rather than deleting them for good.
 - **Other people's things.** Someone else's home, a person's face or a trademarked product for sale are worth a short
-  question about what it's for. The user's own things and public buildings are fine.
+  question about what it's for. The user's own things and public buildings are fine. A figure of a known film, game or
+  cartoon character is a copyrighted design even when the user owns the toy: offer an original character in the same
+  style (proportions, materials, finish) instead of a copy of that character.
 
 ## 1. Read the evidence and fix the numbers
 
@@ -82,8 +88,6 @@ Everything is made by Python run through `execute_blender_code`, so it can be re
   is editing a number and rerunning.
 - **Idempotent scripts**: each deletes what it made before it builds again, and reads positions it depends on from the
   scene, so it still works after something else moved.
-- **Keep long scripts in files** (next to the `.blend` or in a `scripts/` folder) and run them with
-  `exec(open(path).read())`.
 - **Save after every change** (`bpy.ops.wm.save_mainfile()`), and say so.
 
 Helpers in this skill:
@@ -94,7 +98,8 @@ Helpers in this skill:
   leaf cards.
 - `scripts/check_render.py`: quick check renders from given viewpoints (see step 3).
 - `references/techniques.md`: how to do bevels, lathes, booleans, glass, buildings (walls, windows, cladding, roofs,
-  gutters, terrain), plants, and the Blender API traps. Read the section for what you're building.
+  gutters, terrain), figures and toys (shape vs paint, hair, clothes), plants, and the Blender API traps. Read the
+  section for what you're building.
 
 Detail comes in rounds, once the basics stand: proportions first, then the parts the user cares about, then the small
 things that make it convincing (bevelled edges, seams, screws, handles, worn edges, the right number of everything).
@@ -102,10 +107,14 @@ things that make it convincing (bevelled edges, seams, screws, handles, worn edg
 ## 3. Check every change by looking at it
 
 After each change, render from where the user's photo was taken and compare, detail by detail, before you report.
+**Never report a build you haven't compared with the photos.** The first build is a block-out: check its silhouette
+from the front, side and back photos, fix it, and only then add detail. Before reporting, list what still differs
+part by part; if anything big remains (proportions, a part missing or floating, a wrong shape), fix it first.
 Put the camera where the photo was taken (from its pose, or nudged until the corners line up), with the photo's
 field of view and aspect ratio (see `references/techniques.md`, Checking against a photo).
 `scripts/check_render.py` makes small renders from given viewpoints without touching the scene's cameras: set
-`VIEWS`, `OUT` (a temp folder), `PCT` (25 is enough), exec it, then look at the PNGs side by side with the photo. A viewport
+`VIEWS`, `OUT` (a temp folder), `PCT` (25 is enough) and `PHOTOS` (view name → the small photo copy), exec it, and
+read only the `<view>_vs.png` files: the render and the photo in one picture. A viewport
 screenshot (`get_screenshot_of_area_as_image`) is quicker for layout checks.
 
 - Keep MCP calls under ~2 minutes (they time out): 2–3 EEVEE views per call. A timeout doesn't stop Blender;

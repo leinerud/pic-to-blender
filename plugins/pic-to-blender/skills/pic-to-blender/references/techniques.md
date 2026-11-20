@@ -45,6 +45,39 @@ Lessons from building real things from photos in Blender through the MCP. Read t
 - **Mirrored and repeated parts**: model one, then use a MIRROR or ARRAY modifier, or a loop in the script. Count the
   repeats in the photo (spokes, slats, buttons, windows) and match the number exactly.
 
+## Figures, toys and characters
+
+Soft, rounded things (vinyl figures, plush toys, mascots, statuettes) go wrong in a typical way: a stack of spheres
+and ellipsoids at guessed positions, with features floating off the surface. Avoid it like this:
+
+- **Proportions as ratios, measured in pixels.** In the straightest front and side photos, measure head width and
+  height, body width, leg length and total height in pixels, and write the ratios down before modelling. Stylised
+  figures break normal anatomy: a head can be 60 % of the height and twice as wide as the body. Known product lines
+  have standard sizes (look them up) that set the scale.
+- **Shape or paint?** For every feature decide whether it is sculpted (raised or sunk in the photo, it catches light
+  and casts shadow) or only painted (flat, its edge crisp, no shadow). Painted eyes, brows, mouths, stripes and logos
+  are flat: a material on the surface (assign faces of the body mesh, or a thin decal plane with a SHRINKWRAP
+  modifier, offset ~0.1 mm), never a protruding blob.
+- **Know the real size of what you made.** A SUBSURF on a cube shrinks it a lot (a unit cube at level 3 is far
+  smaller than 1 × 1 × 1). Read the evaluated size (`obj.evaluated_get(depsgraph)`, bounding box) and scale until it
+  matches the measured numbers, or use a BEVEL with many segments, which keeps the box's size.
+- **Place things on the surface, not at guessed coordinates.** Use `closest_point_on_mesh` or `ray_cast` on the
+  evaluated body to put eyes, ears, buttons and hands where they touch it, and parent them to the part they sit on.
+- **One base shape per volume, from a cage.** A head, a torso, a shoe: a low-poly cage (boxes with extruded loops)
+  with SUBSURF, shaped to the front and side silhouettes, not a scaled UV sphere. Limbs: a curve with bevel and taper,
+  or the SKIN modifier on a few vertices, so the joints flow into each other.
+- **Clothes as their own layers.** Each garment its own shape and material over the body: a jacket's sleeves, a vest
+  over it with its quilted bands, trousers, shoes with soles, laces and stripes. Colour by what the photos show for
+  each garment, not one colour per body part.
+- **Hair is a shell plus locks.** Copy the head's surface, cut it along the hairline (a list of points read from the
+  front, side and back photos), SOLIDIFY outward to the thickness the silhouette shows. Then add the locks the photos
+  show as tapered curves (bevel + taper) following their flow from the crown or parting, overlapping, ending in
+  points along the fringe and the neck. The hair's outline in the side and back photos is usually far bigger than
+  the skull.
+- **Props are held.** A thing in a hand touches the fingers and is placed by the hand, not floating beside it.
+- **Check silhouettes from front, side and back** against the photos before any detail. If the outline is off, the
+  detail won't save it.
+
 ## Glass, water and see-through things
 
 - Glass: Principled, base nearly black-blue or near-white, roughness 0, coat 1, Alpha 0.15–0.35,
