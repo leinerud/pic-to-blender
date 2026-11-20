@@ -13,8 +13,11 @@ In Claude Code:
 /plugin install pic-to-blender@pic-to-blender
 ```
 
-Without the plugin system, copy `plugins/pic-to-blender/skills/pic-to-blender/` into `~/.claude/skills/`. In the Claude
-app, zip that folder and upload it under Settings → Capabilities → Skills.
+Without the plugin system, copy `plugins/pic-to-blender/skills/pic-to-blender/` into `~/.claude/skills/`.
+
+In the Claude app, download [pic-to-blender.zip](https://github.com/leinerud/pic-to-blender/releases/latest/download/pic-to-blender.zip)
+from the latest release and upload it under Settings → Capabilities → Skills. To hear about new versions, use
+Watch → Custom → Releases on this page.
 
 ## You also need
 
