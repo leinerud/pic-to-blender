@@ -51,20 +51,23 @@ Write the key dimensions down as constants before modelling anything. Sources, s
 
 1. **The user's own measurements** ("the table is 90 × 50", "the gap is 183 cm", a dimensioned sketch). These override
    everything, including your earlier guesses: rebuild around them and move the neighbouring parts.
-2. **Drawings** (floor plans, technical drawings, exploded views). Read the scale from a dimension you can read;
-   crop and enlarge the part you need (`sips -c … --cropOffset … && sips -Z 1300` on macOS, or Pillow) and look again.
-3. **Photos.** Count everything: parts, panels, holes, screws, slats, spokes, windows, panes, and where each sits
+2. **Drawings** (floor plans, sections, elevations, technical drawings, exploded views). Read the scale from a
+   printed dimension, not the paper; crop and enlarge the part you need (`sips -c … --cropOffset … && sips -Z 1300`
+   on macOS, or Pillow) and look again. Where a drawing and a photo disagree on the outside, the photo wins.
+3. **LiDAR depth and the camera pose** from an AR capture app: real 3D points for heights, widths and door corners.
+   See `references/techniques.md` (Reading the evidence).
+4. **Photos.** Count everything: parts, panels, holes, screws, slats, spokes, windows, panes, and where each sits
    relative to edges and to each other. Get scale from something of known size in the picture (a door ~2.1 m, a
    storey ~2.7 m, a credit card 85.6 × 54 mm, an A4 sheet, a hand ~19 cm, a car, a standard brick). Note the colour
    and finish of each part separately (matte, glossy, brushed metal, worn wood).
-4. **Product pages.** For bought things fetch the real spec and dimensions from the maker's page.
-5. **Map / aerial view** for footprints of buildings and lots when nothing better exists.
+5. **Product pages.** For bought things fetch the real spec and dimensions from the maker's page.
+6. **Map / aerial view** for footprints of buildings and lots when nothing better exists.
 
 **Be suspicious of text specs** that contradict the photos or drawings: they may be wrong or AI-written. Point out the
 concrete contradictions, offer options, and if the user still wants it, build it in a *new file* so it can be thrown
 away.
 
-Note what you guessed. Every summary to the user ends with what was estimated and what a photo or a measurement
+Write each number's source in a comment next to it (drawing, LiDAR, photo, guessed). Every summary to the user ends with what was estimated and what a photo or a measurement
 would settle.
 
 ## 2. Build it from scripts, not by hand
@@ -99,6 +102,8 @@ things that make it convincing (bevelled edges, seams, screws, handles, worn edg
 ## 3. Check every change by looking at it
 
 After each change, render from where the user's photo was taken and compare, detail by detail, before you report.
+Put the camera where the photo was taken (from its pose, or nudged until the corners line up), with the photo's
+field of view and aspect ratio (see `references/techniques.md`, Checking against a photo).
 `scripts/check_render.py` makes small renders from given viewpoints without touching the scene's cameras: set
 `VIEWS`, `OUT` (a temp folder), `PCT` (25 is enough), exec it, then look at the PNGs side by side with the photo. A viewport
 screenshot (`get_screenshot_of_area_as_image`) is quicker for layout checks.

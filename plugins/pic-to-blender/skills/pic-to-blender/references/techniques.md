@@ -2,6 +2,30 @@
 
 Lessons from building real things from photos in Blender through the MCP. Read the section for what you're building.
 
+## Reading the evidence
+
+- **Drawings.** Plans give lengths, wall thicknesses and where openings sit along each wall; sections give
+  heights (floor levels, eaves, ridge, pitch); elevations give each facade's windows, sills and cladding. Take the
+  scale from a printed dimension line (measure it in pixels), never from the paper's "1:100": printed or scanned
+  copies are resized. Crop and enlarge before reading small figures. Heights given against a reference level
+  (±0.00) are converted to the model's z = 0. Where a drawing and a photo disagree on the outside, the photo wins
+  (buildings get changed after they're drawn): say so and note the drawing's version.
+- **LiDAR depth + camera pose** (from an AR capture app). A depth pixel `(u, v)` with depth `d` m, scaled to the
+  photo's resolution, is the camera-space point `X = (u - cx) d / fx`, `Y = (cy - v) d / fy`, `Z = d` (camera looking
+  along +Z, Y up); the pose turns it into world space. Read eave height (wall foot to roof edge), ridge height and
+  where across the front it sits, and door corners. Sample a few pixels inside a surface, not on its edge (depth is
+  noisy at edges and on glass), and check one number you can verify (a door height) first. LiDAR reaches ~5 m;
+  further away the map is mostly empty.
+- **Write each number's source** next to its constant (`# drawing: section A`, `# LiDAR`, `# photo`, `# GUESSED`).
+
+## Checking against a photo
+
+- Camera where the photo was taken: position and direction from the pose, or estimated and nudged until the
+  corners line up. Lens: `lens_mm = sensor_width / 2 / tan(hfov / 2)` (Blender's default sensor is 36 mm). Match
+  the render's aspect ratio to the photo's: a portrait photo against a landscape render hides half the errors.
+- Put photo and render side by side in one image and go through it detail by detail: corners and eaves line up,
+  counts right, nothing floating or sunk, no light seams, finishes right.
+
 ## Any object
 
 - **Proportions before detail.** Block the whole thing out in boxes and cylinders at the right size first, render it
@@ -44,6 +68,9 @@ Lessons from building real things from photos in Blender through the MCP. Read t
   opening and along sloping roof lines. Cut each board into pieces and clip them to the roof line and around each
   opening; cutting only whole boards leaves stair steps under every slope. When clipping recursively, ignore crossings
   within 1e-5 m of a piece's ends or the recursion never stops. A bump texture alone is invisible in Solid mode.
+- **Simple buildings (a garage, a shed)**: the walls can be one prism from the gable outline pushed back along the
+  depth; thin dark shadow lines every board height read as cladding at a fraction of the cost of real boards. Don't
+  assume the ridge is centred: on garages and extensions it often isn't, so measure it.
 - **Roofs**: slabs from skewed boxes with a z(x) function; standing seams every 0.5 m; verge and fascia boards.
   Half-round gutters (two concentric half cylinders, end caps, hangers every 0.8 m); round downpipes from the outlet
   through a swan neck back to the wall, straight down with clips every 1.5 m and a shoe at the bottom.
