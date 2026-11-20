@@ -5,7 +5,7 @@
 #            "gable": ((2.5, -9, 4.5), (2.4, 1.45, 4.5), 30)}
 #   OUT = "<scratchpad>/"          # folder for the PNGs
 #   PCT = 25                       # resolution percentage (25 % of 1920x1080 is enough to judge shape, and cheap to look at)
-#   PHOTOS = {"entre": "<folder>/entre_small.jpg"}   # optional: view name -> small copy of the user's photo
+#   PHOTOS = {"entrance": "<folder>/entrance_small.jpg"}   # optional: view name -> small copy of the user's photo
 #   exec(open("<this skill>/scripts/check_render.py").read())
 #
 # With PHOTOS, each such view also gets <name>_vs.png: the render on the left, the photo scaled to the same height on
