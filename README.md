@@ -29,11 +29,21 @@ Watch → Custom → Releases on this page.
 
 Then drag in your photos and say "build this in Blender".
 
+Optional, but they make a big difference: **drawings** (floor plans, sections, elevations, a dimensioned sketch),
+**your own measurements**, and photos from a **phone with LiDAR** through an AR capture app (depth plus where the
+phone stood), so sizes are measured instead of guessed.
+
+## How to get the best result
+
+[GUIDE.md](GUIDE.md) walks through the whole process for people: which photos to take, how to use drawings and
+LiDAR depth, how the numbers are fixed before anything is built, how the model is checked against your photos, and
+how to give corrections.
+
 ## What's in it
 
 | Path (under `plugins/pic-to-blender/skills/pic-to-blender/`) | What it is |
 |---|---|
-| `SKILL.md` | The workflow: read the evidence, build from numbers, render from the photo's angle, compare, fix |
+| `SKILL.md` | The workflow Claude follows: read the evidence, build from numbers, render from the photo's angle, compare, fix |
 | `references/techniques.md` | How to do bevels, lathes, booleans, glass, buildings, plants, and Blender API traps |
 | `scripts/mesh_builder.py` | Helper that builds boxes, cylinders and polygons with materials into one object |
 | `scripts/trees.py` | Real-looking trees and shrubs (oak, birch, rhododendron) |
