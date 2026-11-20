@@ -47,7 +47,9 @@ This work burns tokens fast if done carelessly. Every rule here saves thousands:
   save a copy (`save_as_mainfile`) such as `<name>_v1.1_<what>.blend`, and say which file is open. Move rejected
   versions to the Trash rather than deleting them for good.
 - **Other people's things.** Someone else's home, a person's face or a trademarked product for sale are worth a short
-  question about what it's for. The user's own things and public buildings are fine.
+  question about what it's for. The user's own things and public buildings are fine. A figure of a known film, game or
+  cartoon character is a copyrighted design even when the user owns the toy: offer an original character in the same
+  style (proportions, materials, finish) instead of a copy of that character.
 
 ## 1. Read the evidence and fix the numbers
 
@@ -96,7 +98,8 @@ Helpers in this skill:
   leaf cards.
 - `scripts/check_render.py`: quick check renders from given viewpoints (see step 3).
 - `references/techniques.md`: how to do bevels, lathes, booleans, glass, buildings (walls, windows, cladding, roofs,
-  gutters, terrain), plants, and the Blender API traps. Read the section for what you're building.
+  gutters, terrain), figures and toys (shape vs paint, hair, clothes), plants, and the Blender API traps. Read the
+  section for what you're building.
 
 Detail comes in rounds, once the basics stand: proportions first, then the parts the user cares about, then the small
 things that make it convincing (bevelled edges, seams, screws, handles, worn edges, the right number of everything).
@@ -104,6 +107,9 @@ things that make it convincing (bevelled edges, seams, screws, handles, worn edg
 ## 3. Check every change by looking at it
 
 After each change, render from where the user's photo was taken and compare, detail by detail, before you report.
+**Never report a build you haven't compared with the photos.** The first build is a block-out: check its silhouette
+from the front, side and back photos, fix it, and only then add detail. Before reporting, list what still differs
+part by part; if anything big remains (proportions, a part missing or floating, a wrong shape), fix it first.
 Put the camera where the photo was taken (from its pose, or nudged until the corners line up), with the photo's
 field of view and aspect ratio (see `references/techniques.md`, Checking against a photo).
 `scripts/check_render.py` makes small renders from given viewpoints without touching the scene's cameras: set
